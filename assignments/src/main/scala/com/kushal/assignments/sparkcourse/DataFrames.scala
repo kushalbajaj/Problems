@@ -32,6 +32,7 @@ object DataFrames {
     // class to infer the schema.
     import spark.implicits._
     val lines = spark.sparkContext.textFile("src/main/resources/fakefriends.csv")
+    print("***********"+lines.getNumPartitions)
     val people = lines.map(mapper).toDS().cache()
     
     // There are lots of other ways to make a DataFrame.
